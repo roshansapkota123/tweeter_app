@@ -25,7 +25,7 @@ SECRET_KEY = '21e_6(^tr(*j#4en-if0_zl8x=7q)#_(n92n81^j5j9hsl#q&h'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -76,6 +76,14 @@ BOOTSTRAP4 = { 'include_jquery': True }
 
 LOGIN_REDIRECT_URL = 'home'
 LOGOUT_REDIRECT_URL = 'home'
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.sendgrid.net'
+EMAIL_HOST_USER = os.getenv('SENDGRID_USERNAME')
+EMAIL_HOST_PASSWORD = os.getenv('SENDGRID_PASSWORD')
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+#DEFAULT_FROM_EMAIL = 'myfirstapp@heroku.com'
 
 WSGI_APPLICATION = 'tweeter_app.wsgi.application'
 
