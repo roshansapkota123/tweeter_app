@@ -37,7 +37,14 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.sites',
     'rest_framework',
+    'rest_framework.authtoken',
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
+    'rest_auth',
+    'rest_auth.registration',
     'bootstrap4',
     'bootstrap_datepicker_plus',
     'users',
@@ -45,10 +52,16 @@ INSTALLED_APPS = [
     'api',
 ]
 
+SITE_ID = 1
+
 REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES': [
         'rest_framework.permissions.IsAuthenticatedOrReadOnly',
-    ]
+    ],
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework.authentication.TokenAuthentication',
+        'rest_framework.authentication.SessionAuthentication',
+    ],
 }
 
 AUTH_USER_MODEL = 'users.CustomUser'
@@ -92,7 +105,7 @@ EMAIL_HOST_USER = os.getenv('SENDGRID_USERNAME')
 EMAIL_HOST_PASSWORD = os.getenv('SENDGRID_PASSWORD')
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
-#DEFAULT_FROM_EMAIL = 'myfirstapp@heroku.com'
+#DEFAULT_FROM_EMAIL = 'roshansapkota522@gmail.com'
 
 WSGI_APPLICATION = 'tweeter_app.wsgi.application'
 
