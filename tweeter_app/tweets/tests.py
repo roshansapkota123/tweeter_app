@@ -26,7 +26,7 @@ class TweetTests(TestCase):
 
     def test_tweet_list_view(self):
         response = self.client.get(reverse('home'))
-        self.assertEqual(response.status_code, 200)
+        self.assertEqual(response.status_code, 404)
         self.assertContains(response, 'Nice Tweet!')
         self.assertTemplateUsed(response, 'home.html')
 
