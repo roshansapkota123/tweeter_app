@@ -26,7 +26,7 @@ class TweetTests(TestCase):
 
     def test_tweet_list_view(self):
         response = self.client.get(reverse('home'))
-        self.assertEqual(response.status_code, 404)
+        self.assertEqual(response.status_code, 200)
         self.assertContains(response, 'Nice Tweet!')
         self.assertTemplateUsed(response, 'home.html')
 
@@ -34,5 +34,5 @@ class TweetTests(TestCase):
         self.client.force_login(self.user)
         response = self.client.post(reverse('tweet_new'),
             {'body': 'New tweet' }, follow=True)
-        self.assertEqual(response.status_code, 201)
+        self.assertEqual(response.status_code, 200)
         self.assertContains(response, 'New tweet')

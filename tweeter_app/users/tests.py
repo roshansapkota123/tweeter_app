@@ -53,5 +53,5 @@ class UserTests(TestCase):
 
     def test_reset_password_url(self):
         response = self.client.get(reverse('reset_password'))
-        self.assertEqual(response.status_code, 201)
+        self.assertEqual(response.status_code, 200)
         self.assertTemplateUsed(response, template_name='reset_password.html')
