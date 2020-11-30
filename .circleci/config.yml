@@ -11,12 +11,16 @@ jobs:
       - python/load-cache
       - python/install-deps
       - python/save-cache
-      - python/install-packages:
-          pkg-manager: pip
-          include-python-in-cache-key: false
-      - run: pip install --ignore-installed coverage
-      - run: ./manage.py collectstatic
-      - run: ~/.local/bin/coverage run --source='.' manage.py test
+      - run:
+          command: |
+            python3 -m venv venv
+            . venv/bin/activate
+            pip install -r requirements.txt
+      - run:
+          name: Running tests
+          command: |
+            . venv/bin/activate
+            python3 manage.py test
       #- run:
          # command: ./manage.py test
           #name: Test
