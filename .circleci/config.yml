@@ -11,11 +11,17 @@ jobs:
       - python/load-cache
       - python/install-deps
       - python/save-cache
+      - python/install-packages:
+          pkg-manager: pip
+          include-python-in-cache-key: false
+      - run: pip install --ignore-installed coverage
+      - run: ./manage.py collectstatic
+      - run: ~/.local/bin/coverage run --source='.' manage.py test
       #- run:
          # command: ./manage.py test
           #name: Test
-      - run: ./manage.py collectstatic
-      - run: ~/.local/bin/coverage run --source='.' manage.py test
+      #- run: ./manage.py collectstatic
+      #- run: ~/.local/bin/coverage run --source='.' manage.py test
 
 workflows:
   main:
