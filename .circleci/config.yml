@@ -31,7 +31,7 @@ jobs:
       #- run: ~/.local/bin/coverage run --source='.' manage.py test
 
 workflows:
-  main:
+  master:
     jobs:
       - build-and-test
       - heroku/deploy-via-git
