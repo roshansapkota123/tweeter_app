@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 import os
 from pathlib import Path
 
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -108,7 +109,7 @@ EMAIL_USE_TLS = True
 #DEFAULT_FROM_EMAIL = 'roshansapkota522@gmail.com'
 
 WSGI_APPLICATION = 'tweeter_app.wsgi.application'
-
+SECRET_KEY = os.getenv('SECRET_KEY')
 
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
@@ -158,3 +159,5 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
 STATIC_URL = '/static/'
+
+
