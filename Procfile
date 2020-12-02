@@ -1,1 +1,1 @@
-web: gunicorn tweeter_app.wsgigit b
+web: gunicorn tweeter_app.wsgi
