@@ -33,10 +33,19 @@ jobs:
 workflows:
   heroku_deploy:
     jobs:
-      - build-and-test
-      - heroku/deploy-via-git: # Use the pre-configured job, deploy-via-git
+      - build-and-test:
+          #context: Shared
+          #post-steps:
+          #- slack/notify:
+           #   event: fail
+            #  template: basic_fail_1
+      - hold:
+          type: approval
           requires:
             - build-and-test
+      - heroku/deploy-via-git: # Use the pre-configured job, deploy-via-git
+          requires:
+            - hold
           filters:
             branches:
               only: master

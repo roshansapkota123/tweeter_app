@@ -29,9 +29,9 @@ class UserTests(TestCase):
                 'password1': 'specialpw',
                 'password2': 'specialpw',
             }, follow=True)
-        self.assertEqual(response.status_code, 404)
+        self.assertEqual(response.status_code, 200)
         users = get_user_model().objects.filter(username = 'testuser2')
-        self.assertEqual(users.count(), 0)
+        self.assertEqual(users.count(), 1)
 
     def test_user_update_profile(self):
         u = self.user
