@@ -33,7 +33,7 @@ jobs:
 workflows:
   heroku_deploy:
     jobs:
-      - build-and-test:
+      - build-and-test
           #context: Shared
           #post-steps:
           #- slack/notify:
